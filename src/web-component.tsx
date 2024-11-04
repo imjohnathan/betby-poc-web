@@ -1,10 +1,7 @@
 import ReactDOM from "react-dom/client";
 import App, { AppProps } from "./App"
-
-export const normalizeAttribute = (attribute: string) => {
-  return attribute.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
-};
-
+import { normalizeAttribute } from "./utils";
+import React from "react";
 class WebComponent extends HTMLElement {
   constructor() {
     super();
@@ -14,7 +11,7 @@ class WebComponent extends HTMLElement {
   connectedCallback() {
     const props = this.getPropsFromAttributes<AppProps>();
     const root = ReactDOM.createRoot(this.shadowRoot as ShadowRoot);
-    root.render(<App {...props} />);
+    root.render(<React.StrictMode><App {...props} /></React.StrictMode>);
   }
 
   private getPropsFromAttributes<T>(): T {
@@ -24,7 +21,7 @@ class WebComponent extends HTMLElement {
       const attribute = this.attributes[index];
       props[normalizeAttribute(attribute.name)] = attribute.value;
     }
-
+    console.log(props);
     return props as T;
   }
 }

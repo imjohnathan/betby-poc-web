@@ -5,10 +5,9 @@ export interface ISubscriptionProps {
   shouldDisplayMentions?: boolean;
 }
 
-export const Subscription: FC<ISubscriptionProps> = ({
-  username,
-  shouldDisplayMentions,
-}: ISubscriptionProps) => {
+export const Subscription: FC<ISubscriptionProps> = (props: ISubscriptionProps) => {
+  console.log(props);
+  const { username, shouldDisplayMentions } = props;
   return (
     <>
       <div className="subscription">
@@ -33,3 +32,5 @@ export const Subscription: FC<ISubscriptionProps> = ({
     </>
   );
 };
+
+export default Subscription;
