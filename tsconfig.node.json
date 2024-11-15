@@ -18,7 +18,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* For Lit */
+    "experimentalDecorators": true, // If using decorators
+    "useDefineForClassFields": false
   },
   "include": ["vite.config.ts"]
 }

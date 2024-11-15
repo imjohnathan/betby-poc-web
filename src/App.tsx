@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
-import indexStyles from "@/index.scss?inline";
-import appStyles from "@/App.scss?inline";
+// import indexStyles from "@/index.scss?inline";
+// import appStyles from "@/App.scss?inline";
 
 const Subscription = lazy(() => import("@/components/Subscription"));
 const Home = lazy(() => import("@/components/Home"));
@@ -52,8 +52,6 @@ function App(props: AppProps) {
     },
   ]);
   return <>
-    <style>{indexStyles}</style>
-    <style>{appStyles}</style>
     <h1>BetBy Component</h1>
     <Suspense fallback={<div>Loading...</div>}>
       <RouterProvider router={router} />

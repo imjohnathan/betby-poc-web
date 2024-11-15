@@ -11,7 +11,18 @@ export default defineConfig(({ mode }) => {
         NODE_ENV: JSON.stringify(env.NODE_ENV)
       },
     },
-    plugins: [react()],
+    plugins: [react({
+      babel: {
+        "plugins": [
+          [
+            "@babel/plugin-syntax-decorators",
+            {
+              "legacy": true
+            }
+          ]
+        ]
+      }
+    })],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
