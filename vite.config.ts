@@ -1,6 +1,9 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path';
+import Icons from 'unplugin-icons/vite'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+
 const projectName = "betby-component";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -18,10 +21,19 @@ export default defineConfig(({ mode }) => {
             "@babel/plugin-syntax-decorators",
             {
               "legacy": true
-            }
-          ]
+            },
+          ],
         ]
       }
+    }),
+    Icons({
+      compiler: 'jsx', jsx: 'react',
+      customCollections: {
+        'customIcons': FileSystemIconLoader(
+          './src/assets/icons',
+          svg => svg.replace(/^<svg /, '<svg fill="currentColor" '),
+        ),
+      },
     })],
     resolve: {
       alias: {
